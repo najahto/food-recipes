@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.22554347826086957" />
         <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/fragment_food_joke.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/fragment_recipes.xml" value="0.25" />
         <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/fragment_recipies.xml" value="0.22554347826086957" />
+        <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/recipes_row_layout.xml" value="0.22" />
+        <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/layout/recipes_rv_item.xml" value="0.67" />
         <entry key="..\:/Users/omar_/AndroidStudioProjects/FoodReceipes/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
       </map>
     </option>
