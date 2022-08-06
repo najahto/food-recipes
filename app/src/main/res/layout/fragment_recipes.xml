@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightGray"
-    tools:context=".RecipesFragment">
+    tools:context=".ui.fragments.RecipesFragment">
 
     <ImageView
         android:id="@+id/ivError"
@@ -38,8 +38,7 @@
         android:id="@+id/rvRecipesList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginHorizontal="8dp"
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,6 +52,7 @@
         android:id="@+id/shimmerFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
         android:animateLayoutChanges="true"
         android:animationCache="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,8 +79,8 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_restaurant"
