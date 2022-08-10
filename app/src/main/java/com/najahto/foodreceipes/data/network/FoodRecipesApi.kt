@@ -1,4 +1,4 @@
-package com.najahto.foodreceipes
+package com.najahto.foodreceipes.data.network
 
 import com.najahto.foodreceipes.models.FoodRecipe
 import retrofit2.Response
