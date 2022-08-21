@@ -1,6 +1,6 @@
 package com.najahto.foodreceipes.di
 
-import com.najahto.foodreceipes.Constants.Companion.BASE_URL
+import com.najahto.foodreceipes.utils.Constants.Companion.BASE_URL
 import com.najahto.foodreceipes.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides

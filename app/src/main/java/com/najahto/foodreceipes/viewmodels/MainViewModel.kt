@@ -1,4 +1,4 @@
-package com.najahto.foodreceipes
+package com.najahto.foodreceipes.viewmodels
 
 import android.app.Application
 import android.content.Context
@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
     }
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
-        recipesResponse.value = NetworkResult.Lading()
+        recipesResponse.value = NetworkResult.Laoding()
 
         if (isInternetConnectionAvailable()) {
             try {
