@@ -1,90 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lightGray"
-    tools:context=".ui.fragments.RecipesFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/ivError"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:alpha="0.5"
-        android:src="@drawable/ic_dissatisfied"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:alpha="0.5"
-        android:text="@string/no_internet_connection"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/ivError"
-        app:layout_constraintStart_toStartOf="@+id/ivError"
-        app:layout_constraintTop_toBottomOf="@+id/ivError" />
+        <variable
+            name="mainViewModel"
+            type="com.najahto.foodreceipes.viewmodels.MainViewModel" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRecipesList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="8dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/recipes_row_layout" />
-
-    <!--shimmer place holder view-->
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="8dp"
-        android:animateLayoutChanges="true"
-        android:animationCache="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/lightGray"
+        tools:context=".ui.fragments.RecipesFragment">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/ivError"
+            ivReadApiResponse="@{mainViewModel.recipesResponse}"
+            ivReadDatabase="@{mainViewModel.readRecipes}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:alpha="0.5"
+            android:src="@drawable/ic_dissatisfied"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tvReadApiResponse="@{mainViewModel.recipesResponse}"
+            tvReadDatabase="@{mainViewModel.readRecipes}"
+            android:layout_marginTop="8dp"
+            android:alpha="0.5"
+            android:text="@string/no_internet_connection"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/ivError"
+            app:layout_constraintStart_toStartOf="@+id/ivError"
+            app:layout_constraintTop_toBottomOf="@+id/ivError" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecipesList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/recipes_row_layout" />
+
+        <!--shimmer place holder view-->
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:animateLayoutChanges="true"
+            android:animationCache="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <include layout="@layout/recipes_shimmer_placeholder_layout" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <include layout="@layout/recipes_shimmer_placeholder_layout" />
+                <include layout="@layout/recipes_shimmer_placeholder_layout" />
 
-            <include layout="@layout/recipes_shimmer_placeholder_layout" />
+                <include layout="@layout/recipes_shimmer_placeholder_layout" />
 
-            <include layout="@layout/recipes_shimmer_placeholder_layout" />
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
+                <include layout="@layout/recipes_shimmer_placeholder_layout" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_restaurant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <include layout="@layout/recipes_shimmer_placeholder_layout" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_restaurant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

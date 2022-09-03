@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.najahto.foodreceipes.R
 import com.najahto.foodreceipes.viewmodels.MainViewModel
 import com.najahto.foodreceipes.adapters.RecipesAdapter
+import com.najahto.foodreceipes.databinding.FragmentRecipesBinding
+//import com.najahto.foodreceipes.databinding.FragmentRecipesBinding
 import com.najahto.foodreceipes.utils.NetworkResult
 import com.najahto.foodreceipes.utils.observeOnce
 import com.najahto.foodreceipes.viewmodels.RecipesViewModel
@@ -26,6 +28,9 @@ class RecipesFragment : Fragment() {
     companion object {
         private const val TAG = "RecipesFragment"
     }
+
+    private var _binding: FragmentRecipesBinding? = null
+    private val binding get() = _binding!!
 
     private val mAdapter by lazy { RecipesAdapter() }
     private lateinit var mainViewModel: MainViewModel
@@ -44,16 +49,17 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_recipes, container, false)
-
+        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
         setupRecipesRecyclerView()
         readDatabase()
-        return mView
+        return binding.root
     }
 
     private fun setupRecipesRecyclerView() {
-        mView.rvRecipesList.adapter = mAdapter
-        mView.rvRecipesList.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvRecipesList.adapter = mAdapter
+        binding.rvRecipesList.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
 
     }
@@ -109,6 +115,11 @@ class RecipesFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     override fun onResume() {
         super.onResume()
         showShimmerEffect()
@@ -120,13 +131,13 @@ class RecipesFragment : Fragment() {
     }
 
     private fun showShimmerEffect() {
-        mView.rvRecipesList.visibility = View.GONE
-        mView.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.rvRecipesList.visibility = View.GONE
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
     }
 
     private fun hideShimmerEffect() {
-        mView.shimmerFrameLayout.visibility = View.GONE
-        mView.rvRecipesList.visibility = View.VISIBLE
+        binding.shimmerFrameLayout.visibility = View.GONE
+        binding.rvRecipesList.visibility = View.VISIBLE
     }
 
 }
