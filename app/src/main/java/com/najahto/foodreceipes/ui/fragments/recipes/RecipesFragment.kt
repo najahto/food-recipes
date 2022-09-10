@@ -1,4 +1,4 @@
-package com.najahto.foodreceipes.ui.fragments
+package com.najahto.foodreceipes.ui.fragments.recipes
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.najahto.foodreceipes.R
 import com.najahto.foodreceipes.viewmodels.MainViewModel
@@ -54,6 +55,11 @@ class RecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
         setupRecipesRecyclerView()
         readDatabase()
+
+        binding.fabRecipesFilter.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+        }
+
         return binding.root
     }
 
@@ -120,10 +126,10 @@ class RecipesFragment : Fragment() {
         _binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        showShimmerEffect()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        showShimmerEffect()
+//    }
 
     override fun onPause() {
         super.onPause()
